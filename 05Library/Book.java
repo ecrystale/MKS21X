@@ -22,4 +22,13 @@ public class Book{
     public String toString(){
 	return title+", "+author+", "+ISBN;
     }
+    public void setTitle(String newt){
+	title=newt;
+    }
+    public void setAuthor(String newa){
+	author=newa;
+    }
+    public void setISBN(String newi){
+	ISBN=newi;
+    }
 }
