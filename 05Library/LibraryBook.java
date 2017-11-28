@@ -7,6 +7,18 @@ abstract Class LibraryBook extends Book implements Comparable<LibraryBook>{
     public String getAuthor(){
 	return a.getAuthor();
     }
+    public String getTitle(){
+	return a.getTitle();
+    }
+    public String getISBN(){
+	return a.getISBN();
+    }
+    public String getCN(){
+	return callNumber;
+    }
+    public String setAuthor(){
+
+    }
 }
 Class LibraryBook models information common for library books. In addition to author, title, and ISBN, library books have call numbers, and library books are stored on the shelves in order by call number. Further, many library books may be able to circulate. In addition to fields and methods of books, any library book has
 
