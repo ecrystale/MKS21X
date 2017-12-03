@@ -5,7 +5,7 @@ public class Book{
     public Book(){
 
     }
-    public Book(String titlex, String authorx, String ISBNx){
+    public Book(String authorx, String titlex, String ISBNx){
 	title=titlex;
 	author=authorx;
 	ISBN=ISBNx;
