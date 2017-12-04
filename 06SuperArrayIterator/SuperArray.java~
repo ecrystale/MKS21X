@@ -1,9 +1,5 @@
-import java.util.Iterator;
-public class SuperArray implements Iterable<String>{
-    public Iterator<String> iterator(){
-	return new SuperArrayIterator(0,size);
-    }
-
+public class SuperArray{
+    
     private String[] data;
     private int size;
 
@@ -47,10 +43,10 @@ public class SuperArray implements Iterable<String>{
 
     public String toString(){
 	String ans = "[";
-	for (int x = 0; x < size - 1; x++){
+	for (int x = 0; x < data.length - 1; x++){
 	    ans = ans + data[x] + ", ";
 	}
-	ans = ans + data[size - 1] + "]";
+	ans = ans + data[data.length - 1] + "]";
 	return ans;
     }
 
