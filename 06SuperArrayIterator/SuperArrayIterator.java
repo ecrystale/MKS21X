@@ -1,9 +1,10 @@
 import java.util.Iterator;
 public class SuperArrayIterator implements Iterator<String>{
-    int current,end;
-    public SuperArrayIterator(int start,int stop){
-	current = start;
-	end = stop;
+    private SuperArray data;
+    private int current;
+    public SuperArrayIterator(SuperArray pulled){
+	data=pulled;
+	current=0;
     }
     public String next(){
 	if(hasNext()){
@@ -11,11 +12,11 @@ public class SuperArrayIterator implements Iterator<String>{
 	}else{
 	    System.exit(0);
 	}
-	return next();
+	return data.get(current-1);
     }
 
     public boolean hasNext(){
-	return current <= end;
+	return current < data.size();
     }
     public void remove(){
 	throw new UnsupportedOperationException();

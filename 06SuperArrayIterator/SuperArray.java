@@ -1,7 +1,7 @@
 import java.util.Iterator;
 public class SuperArray implements Iterable<String>{
     public Iterator<String> iterator(){
-	return new SuperArrayIterator(0,size);
+	return new SuperArrayIterator(this);
     }
 
     private String[] data;
