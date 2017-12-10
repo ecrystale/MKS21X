@@ -40,6 +40,26 @@ public class Sorts{
 	    }
     }
     
+    public static void bubbleSort(int[] data){
+	int position=data.length-1;
+	int swap=1;
+	while (swap>0){
+	    int place=0;
+	    swap=1;
+	    while(place<position){
+		int orig=data[place];
+		if (data[place]>data[place+1]){
+		    data[place]=data[place+1];
+		    data[place+1]=orig;
+		    swap++;
+		}
+		place++;
+	    }
+	    position--;
+	    swap--;
+	}
+    }
+
     public static void main(String[]args){                                      
         int[] randish = new int[15];                                            
         for(int i = 0 ; i < randish.length; i++){                              
@@ -48,12 +68,12 @@ public class Sorts{
         System.out.println(Arrays.toString(randish));
 	selectionSort(randish);                           
         System.out.println(Arrays.toString(randish));   
-        int[] randish2 = new int[15];                                           
+        int[] randish2 = new int[5];                                           
         for(int i = 0 ; i < randish2.length; i++){                              
             randish2[i] =(int)(Math.random()*100);                              
         }                                                                     
         System.out.println(Arrays.toString(randish2));
-	insertionSort(randish2);                          
+	bubbleSort(randish2);                          
         System.out.println(Arrays.toString(randish2));
     }                                                     
 }
