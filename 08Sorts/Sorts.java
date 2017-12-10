@@ -27,18 +27,19 @@ public class Sorts{
   }
 
     public static void insertionSort(int[] data){
-	int place;
-	for (int i=0;i<data.length-1;i++){
-	    place=data[i];
-	    for(int x=i+1;x<data.length;x++){
-		place=data[i];
-		if (data[x]<place){
-		    data[i]=data[x];
-		    data[x]=place;
+	int place=1;
+	    while(place<data.length){
+		int i=place;
+		int last=data[i];
+		while(i>0 && last<data[i-1]){
+		    data[i]=data[i-1];
+		    i--;
 		}
+		data[i]=last;
+		place++;
 	    }
-	}
     }
+    
     public static void main(String[]args){                                      
         int[] randish = new int[15];                                            
         for(int i = 0 ; i < randish.length; i++){                              
