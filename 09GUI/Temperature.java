@@ -3,11 +3,12 @@ import java.awt.*;
 import java.awt.event.*;
 public class Temperature extends JFrame implements ActionListener{
     private Container pane;
-    private JTextField text;
     private JButton b,b2;
-    public void Temperature() {
+    private JTextField text;
+
+    public Temperature() {
         this.setTitle("Temperature GUI");
-        this.setSize(500,80);
+        this.setSize(600,80);
         this.setLocation(100,100);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -44,9 +45,13 @@ public class Temperature extends JFrame implements ActionListener{
     }
     public void actionPerformed(ActionEvent e){
 	String event=e.getActionCommand();
-        if (event.equals("CtoF")){
-
-	};
+	System.out.println(event); //prints the actions
+	if (text.equals("Celcius to Fahrenheit")){
+	    text.setText(String.valueOf(FtoC(Double.parseDouble(text.getText()))));
+	}
+	if (event.equals("Fahrenheit to Celcius")){
+	    text.setText(String.valueOf(FtoC(Double.parseDouble(text.getText()))));
+	}
     }
     public static void main(String[] args){
         Temperature g = new Temperature();
