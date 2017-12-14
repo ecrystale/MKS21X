@@ -1,15 +1,30 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class Temperature implements ActionListener{
-    TextField t=new Textfield(20);
-    Button b=new Button("Enter");
-    public Temperature(){
+public class Temperature extends JFrame implements ActionListener{
+    private Container pane;
+    private JTextField text;
+    private JButton b,b2;
+    public void Temperature() {
         this.setTitle("Temperature GUI");
-        this.setSize(600,400);
+        this.setSize(500,80);
         this.setLocation(100,100);
-	pane=this.getContentPane();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        pane = this.getContentPane();
+        pane.setLayout(new FlowLayout());
+        b = new JButton("Celcius to Fahrenheit");
+        b2 = new JButton("Fahrenheit to Celcius");
+        text = new JTextField(15);
+
+        b.addActionListener(this);
+        b2.addActionListener(this);
+        text.addActionListener(this);
+
+        pane.add(text);
+        pane.add(b);
+        pane.add(b2);
+
     }
     public static double CtoF(double t){
 	if (t<0){
