@@ -1,5 +1,5 @@
 import java.util.*;
-public class ReverseCharSequence implements CharSequence{
+public class ReversedCharSequence implements CharSequence{
     private String word;
     public ReverseCharSequence(String orig){
 	String copy="";
