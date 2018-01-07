@@ -5,7 +5,7 @@ public class Barcode{
     private static String[] nums={"1","2","3","4","5","6","7","8","9","0"};
     private static String[] scheme={":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::","||:::"};
     public Barcode(String ozip){
-	if (!isnumerical(ozip) && !(ozip.length()==5)){
+	if (!isnumerical(ozip) || !(ozip.length()==5)){
 	    throw new IllegalArgumentException();
 	}
 	else{
@@ -20,10 +20,10 @@ public class Barcode{
 	}
 	return String.valueOf(sum%10);
     }
-    private boolean isnumerical(String orig){
+    private static boolean isnumerical(String orig){
 	for (int i=0;i<orig.length();i++){
-	    int z=Integer.valueOf(orig.substring(i,i+1));
-	    if (!(z>=0) && !(z<=9)){
+	    int z=Integer.parseInt(orig.substring(i,i+1));
+	    if (!(!(z<=9))){
 		return false;
 	    }
 	}
@@ -42,22 +42,39 @@ public class Barcode{
 	if (code.length()!=32){
 	    throw new IllegalArgumentException();
 	}
-	String finals="";
-	for (int i=1;i<code.length()-6;i+=5){ //takes out "|"
-	    String x=code.substring(i,i+5);
-	    for (int y=0;y<10;y++){
-		if (scheme[y].equals(x)){
-		    finals+=nums[y];
+	else{
+	    try{
+		String finals="";
+		for (int i=1;i<code.length()-6;i+=5){ //takes out "|"
+		    String x=code.substring(i,i+5);
+		    for (int y=0;y<10;y++){
+			if (scheme[y].equals(x)){
+			    finals+=nums[y];
+			}
+		    }
 		}
+		return finals;
+	    }
+	    catch(IllegalArgumentException e){
+		throw new IllegalArgumentException();
 	    }
 	}
-	return finals;
     }
 
 
     public static String toCode(String zip){
-	Barcode a=new Barcode(zip);
-	return a.getCode();
+	if (!isnumerical(zip) || !(zip.length()==5)){
+	    throw new IllegalArgumentException();
+	}
+	else{
+	    try{
+		Barcode a=new Barcode(zip);
+		return a.getCode();
+	    }
+	    catch(IllegalArgumentException e){
+		throw new IllegalArgumentException();
+	    }
+	}
     }
 
     public String toString(){
@@ -80,10 +97,10 @@ public class Barcode{
 	}
 	finals+="|";
 	return finals;
+    
     }
 	    
     public String getZip(){
 	return zip;
     }
-    
 }
